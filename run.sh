@@ -5,6 +5,6 @@ source $RUN_PATH/init.sh
 
 export ZDOTDIR=$RUN_PATH
 
-zsh -i 2>/dev/null
+zsh -i
 
 echo "Bye ~"
