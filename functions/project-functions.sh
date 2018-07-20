@@ -17,3 +17,23 @@ function customCommit() {
     git commit --amend --no-verify
     #git push
 }
+
+
+_GET() {
+    local state
+
+    _arguments \
+        '1: :->command' \
+        '*: :->others'
+    case $state in
+        (command) _arguments '1:profiles:(foo bar hello world)' ;;
+        (*) compadd "$@" v
+    esac
+}
+
+function GET() {
+    echo "$*"
+}
+
+compdef _GET GET
+
