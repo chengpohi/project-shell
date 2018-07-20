@@ -26,6 +26,32 @@ Also you can add your custom properties in `env.projecties` file.
 
 so it's helpful write a custom project shell for your project, and **share to other team member**.
 
+## Auto Complete
+
+You can add custom autocomplete into `functions.sh`, example:
+
+```bash
+_GET() {
+    local state
+
+    _arguments \
+        '1: :->command' \
+        '*: :->others'
+    case $state in
+        (command) _arguments '1:profiles:(foo bar hello world)' ;;
+        (*) compadd "$@" v
+    esac
+}
+
+function GET() {
+    echo "$*"
+}
+
+compdef _GET GET
+```
+
+so when you input `GET` command, you can use **tab** to auto complete: `foo bar hello world`, after this, it can autocomplete `v`.
+
 
 # Compatibility
 
